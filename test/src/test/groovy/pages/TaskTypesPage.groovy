@@ -18,11 +18,6 @@ class TaskTypesPage extends Page{
 
     def selectBoostTesttask(){
         boostTest.click()
-        browser.at BoostTesttaskConfiguration
-    }
-
-    def selectFtpUpload(){
-        ftpUpload.click()
-        browser.at FTPUploadConfigurationPage
+        browser.at BoostTestTaskConfiguration
     }
 }

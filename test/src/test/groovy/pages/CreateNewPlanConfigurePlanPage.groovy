@@ -43,7 +43,7 @@ class CreateNewPlanConfigurePlanPage extends Page
         {
             existingProjectKey = "newProject"
         }
-        waitFor {projectName.isDisplayed()}
+
         projectName = generator.generate(8)
         chainName = generator.generate(8)
 
@@ -62,8 +62,7 @@ class CreateNewPlanConfigurePlanPage extends Page
 
         // for Bamboo 6.4 version
         if (noneRepositoryOption.isDisplayed()){
-            js.exec("scroll(0, 250)")
-            noneRepositoryOption.click()
+            js."document.querySelector('#repositoryTypeNoneOption').click()"
             return
         }
 

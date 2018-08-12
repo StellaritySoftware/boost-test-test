@@ -15,14 +15,14 @@ class DashboardPage extends Page
         userManagementOption {$("[href='/bamboo/admin/user/viewUsers.action']")}
     }
 
-    def UserManagementPage openUserManagementPage()
+    def openUserManagementPage()
     {
         waitFor {administrationButton.click()}
         waitFor {userManagementOption.click()}
         browser.at UserManagementPage
     }
 
-    def CreateNewPlanConfigurePlanPage createNewPlan()
+    def createNewPlan()
     {
         buttonCreate.click()
         createPlan.click()

@@ -18,6 +18,8 @@ class PlanBuildPage extends Page {
         buttonActions{$("button.aui-button.aui-dropdown2-trigger span.aui-icon.aui-icon-small.aui-iconfont-configure")}
         configurePlanLink{$(By.id("editBuild:${Config.projKey}-${Config.planKey}"))}
         defaultJobLink{$(By.id("viewJob_${Config.projKey}-${Config.planKey}-JOB1"))}
+        failedLabel{$(By.cssSelector("div.test-summary li.new-failures a"))}
+        compilationWarining{$(By.cssSelector("div.result-summary-tab div.aui-message.warning p strong"))}
     }
 
     def waitForSuccessfulHeader() {
@@ -38,4 +40,12 @@ class PlanBuildPage extends Page {
         defaultJobLink.click()
     }
 
+    def checkNumberOfFailedTests(CharSequence number){
+        failedLabel.text().contains(number)
+    }
+
+    def waitForCompilationWarning() {
+        waitFor {compilationWarining.isDisplayed()}
+        compilationWarining.text() == "No failed tests found, a possible compilation error occurred."
+    }
  }

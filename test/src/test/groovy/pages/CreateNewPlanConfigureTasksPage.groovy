@@ -27,14 +27,9 @@ class CreateNewPlanConfigureTasksPage extends Page
             buttonCreate.click()
         }
         else if(!buttonCreatePlan.empty){
-            buttonCreatePlan.click()
+            js."document.querySelector('#createPlan').click()"
         }
         browser.at CreatedPlanPage
-    }
-
-    def BoostTesttaskConfiguration selectFTPDownloadtask(){
-        editTaskLink.click()
-        browser.at BoostTesttaskConfiguration
     }
 
     def markEnablePlanCheckbox(){
