@@ -45,8 +45,17 @@ class BoostTestTaskConfiguration extends Page{
     }
 
     def enterOutputFilesName(String name) {
-
         js."document.querySelector('#boosttestOutputFiles').scrollIntoView()"
         outpuFiles << name
+    }
+
+    def checkTaskNameCollision() {
+        js."document.querySelector('#boosttestUseTaskName').scrollIntoView"
+        js."document.querySelector('#boosttestUseTaskName').click()"
+    }
+
+    def checkFileNameCollision() {
+        js."document.querySelector('#boosttestUseFileName').scrollIntoView()"
+        js."document.querySelector('#boosttestUseFileName').click()"
     }
 }

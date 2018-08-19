@@ -20,6 +20,7 @@ class PlanBuildPage extends Page {
         defaultJobLink{$(By.id("viewJob_${Config.projKey}-${Config.planKey}-JOB1"))}
         failedLabel{$(By.cssSelector("div.test-summary li.new-failures a"))}
         compilationWarining{$(By.cssSelector("div.result-summary-tab div.aui-message.warning p strong"))}
+        testsTabLink{$(By.id("tests:${Config.projKey}-${Config.planKey}-1"))}
     }
 
     def waitForSuccessfulHeader() {
@@ -47,5 +48,9 @@ class PlanBuildPage extends Page {
     def waitForCompilationWarning() {
         waitFor {compilationWarining.isDisplayed()}
         compilationWarining.text() == "No failed tests found, a possible compilation error occurred."
+    }
+
+    def checkTextAddedToTests(String fileName, Integer expectedTestsCount) {
+        return driver.findElements(By.xpath("//table[@id='new-failed-tests']//td/span[contains(text(), '{${fileName}}')]")).size() == expectedTestsCount
     }
  }

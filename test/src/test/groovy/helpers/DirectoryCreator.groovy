@@ -26,12 +26,5 @@ class DirectoryCreator {
                  StandardCopyOption.REPLACE_EXISTING,
                  StandardCopyOption.COPY_ATTRIBUTES
          )
-
-         Files.copy(
-                 new File(Paths.get(Config.testFiles).toString(), "libboost_unit_test_framework.so.1.58.0").toPath(),
-                 new File(Paths.get(Config.bambooHome, "xml-data", "build-dir", "${Config.projKey}-${Config.planKey}-JOB1", "libboost_unit_test_framework.so.1.58.0").toString()).toPath(),
-                 StandardCopyOption.REPLACE_EXISTING,
-                 StandardCopyOption.COPY_ATTRIBUTES
-         )
      }
 }

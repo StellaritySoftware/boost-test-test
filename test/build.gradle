@@ -42,7 +42,11 @@ test{
 
 //    filter{
 //
-//      includeTestsMatching "ParseXmlTest"
+//        includeTestsMatching "ParseXmlTest"
+//        includeTestsMatching "UseFileNameCollisionTest"
+//        includeTestsMatching "UseTaskNameCollisionTest"
+//        includeTestsMatching "UseTaskAndFileNamesCollisionTest"
+//        includeTestsMatching "CheckPatternsTest"
 //    }
 
     systemProperties "geb.build.reportsDir": "$reportsDir/geb"

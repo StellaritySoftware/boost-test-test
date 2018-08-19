@@ -19,6 +19,7 @@ class ParseXmlTest extends GebReportingSpec
 
         DirectoryCreator.createPlanDirectory()
         DirectoryCreator.copyFile("testXml.xml")
+        DirectoryCreator.copyFile("libboost_unit_test_framework.so.1.58.0")
 
 
         createNewPlanConfigurePlanPage.setNoneRepository()
