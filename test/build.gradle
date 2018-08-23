@@ -47,6 +47,7 @@ test{
 //        includeTestsMatching "UseTaskNameCollisionTest"
 //        includeTestsMatching "UseTaskAndFileNamesCollisionTest"
 //        includeTestsMatching "CheckPatternsTest"
+//        includeTestsMatching "UseSubdirectoryTest"
 //    }
 
     systemProperties "geb.build.reportsDir": "$reportsDir/geb"

@@ -11,20 +11,21 @@ import java.nio.file.StandardCopyOption
  */
 class DirectoryCreator {
 
-     private static void createPlanDirectory() throws IOException {
+     private static void createPlanDirectory(def subdirectory = "") throws IOException {
 
          def path = Paths.get(Config.bambooHome, "xml-data", "build-dir").toString()
          final FileTreeBuilder treeBuilder = new FileTreeBuilder(new File(path))
-         treeBuilder.dir("${Config.projKey}-${Config.planKey}-JOB1")
+         treeBuilder.dir("${Config.projKey}-${Config.planKey}-JOB1"){dir(subdirectory)}
      }
 
-     private static void copyFile(String fileName) {
+
+     private static void copyFile(String fileName, String subDirectory = "") {
 
          Files.copy(
-                 new File(Paths.get(Config.testFiles).toString(), fileName).toPath(),
-                 new File(Paths.get(Config.bambooHome, "xml-data", "build-dir", "${Config.projKey}-${Config.planKey}-JOB1", fileName).toString()).toPath(),
-                 StandardCopyOption.REPLACE_EXISTING,
-                 StandardCopyOption.COPY_ATTRIBUTES
+             new File(Paths.get(Config.testFiles).toString(), fileName).toPath(),
+             new File(Paths.get(Config.bambooHome, "xml-data", "build-dir", "${Config.projKey}-${Config.planKey}-JOB1", subDirectory, fileName).toString()).toPath(),
+             StandardCopyOption.REPLACE_EXISTING,
+             StandardCopyOption.COPY_ATTRIBUTES
          )
      }
 }
