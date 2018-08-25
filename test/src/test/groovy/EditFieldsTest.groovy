@@ -41,12 +41,12 @@ class EditFieldsTest extends GebReportingSpec
         boostTestTaskConfiguration.disabletaskCheckboxUpdate == "true"
         boostTestTaskConfiguration.testExecutables.value() == "my_test,testFile_Test"
         boostTestTaskConfiguration.subdirectory.value() == "subDir"
-        boostTestTaskConfiguration.environmentVariable.value() == "JAVA_OPTS=-Xmx256m -Xms128m"
 
         when:
         boostTestTaskConfiguration.uncollapseAdvancedOptions()
 
         then:
+        boostTestTaskConfiguration.environmentVariable.value() == "JAVA_OPTS=-Xmx256m -Xms128m"
         boostTestTaskConfiguration.taskNameCollisions.value() == "true"
         boostTestTaskConfiguration.fileNameCollisions.value() == "true"
         boostTestTaskConfiguration.timeout.value() == "5"
@@ -74,13 +74,13 @@ class EditFieldsTest extends GebReportingSpec
         boostTestTaskConfiguration.taskDescriptionUpdate.value() == "second_task"
         boostTestTaskConfiguration.disabletaskCheckboxUpdate.value() == null
         boostTestTaskConfiguration.parseOnlyModeCheckbox.value() == "true"
+        boostTestTaskConfiguration.subdirectory.value() == ""
 
         when:
         boostTestTaskConfiguration.uncollapseAdvancedOptions()
 
         then:
         boostTestTaskConfiguration.outpuFiles.value() == "testXml.xml"
-        boostTestTaskConfiguration.subdirectory.value() == ""
         boostTestTaskConfiguration.taskNameCollisions.value() == null
         boostTestTaskConfiguration.fileNameCollisions.value() == null
         boostTestTaskConfiguration.pickOutdatedFiles.value() == "true"
