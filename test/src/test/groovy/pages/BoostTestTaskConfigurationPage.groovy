@@ -5,7 +5,7 @@ import geb.Page
 /**
  * Created by Kateryna on 05.12.2017.
  */
-class BoostTestTaskConfiguration extends Page{
+class BoostTestTaskConfigurationPage extends Page{
 
     static url = {Config.context + "/build/admin/create/createPlanTasks.action"}
     static at = { ($("#createTask h2").text() == "Boost::Test Task configuration" ||
@@ -13,19 +13,22 @@ class BoostTestTaskConfiguration extends Page{
     }
 
     static content = {
-        taskDescreption {$("#createTask_userDescription")}
-        disabletaskCheckbox {$("#label_createTask_taskDisabled")}
+        taskDescription { $("#createTask_userDescription")}
+        taskDescriptionUpdate{$("#updateTask_userDescription")}
+        disabletaskCheckbox {$("#createTask_taskDisabled")}
+        disabletaskCheckboxUpdate {$("#updateTask_taskDisabled")}
         parseOnlyModeCheckbox{$("#boosttestParseOnly")}
         testExecutables {$("#boosttestExecutables")}
         subdirectory {$("#boosttestSubdirectory")}
         taskNameCollisions {$("#boosttestUseTaskName")}
         fileNameCollisions {$("#boosttestUseFileName")}
-        environmentVariable {$("#boosttestEnvironment")}
+        environmentVariable {$("input#boosttestEnvironment")}
         timeout{$("#boosttestTimeout")}
         successfulTaskCreationText {$("div.aui-message.aui-message-success").text() == "Task created successfully."}
         successfulTaskUpdatedText {$("div.aui-message.aui-message-success").text() == "Task saved successfully."}
         outpuFiles{$("#boosttestOutputFiles")}
         pickOutdatedFiles{$("#boosttestPickOutdatedFiles")}
+        collapseSection{$("form div.collapsible-details")}
 
     }
 
@@ -41,7 +44,7 @@ class BoostTestTaskConfiguration extends Page{
 
     def uncollapseAdvancedOptions(){
         js."document.querySelector('fieldset.collapsible-section.collapsed div.summary span.icon.icon-expand').click()"
-        waitFor{pickOutdatedFiles.isDisplayed()}
+        waitFor{collapseSection.isDisplayed()}
     }
 
     def enterOutputFilesName(String name) {
@@ -58,4 +61,9 @@ class BoostTestTaskConfiguration extends Page{
         js."document.querySelector('#boosttestUseFileName').scrollIntoView()"
         js."document.querySelector('#boosttestUseFileName').click()"
     }
-}
+
+    def checkPickOutdatedFiles() {
+        js."document.querySelector('#boosttestOutputFiles').scrollIntoView()"
+        pickOutdatedFiles = true
+    }
+ }

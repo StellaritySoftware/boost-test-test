@@ -18,6 +18,6 @@ class TaskTypesPage extends Page{
 
     def selectBoostTesttask(){
         boostTest.click()
-        browser.at BoostTestTaskConfiguration
+        browser.at BoostTestTaskConfigurationPage
     }
 }

@@ -26,7 +26,7 @@ class UseTaskNameCollisionTest extends GebReportingSpec
         def tasks = configureTasksPage.addTask()
 
         def boostTestTaskConfiguration = tasks.selectBoostTesttask()
-        boostTestTaskConfiguration.taskDescreption << "myBoostTask"
+        boostTestTaskConfiguration.taskDescription << "myBoostTask"
         boostTestTaskConfiguration.testExecutables << "my_test"
         boostTestTaskConfiguration.checkTaskNameCollision()
         boostTestTaskConfiguration.clickSave()

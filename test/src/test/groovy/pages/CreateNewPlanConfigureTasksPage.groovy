@@ -37,4 +37,9 @@ class CreateNewPlanConfigureTasksPage extends Page
             enablePlanCheckBox = true
         }
     }
+
+    def editBoostTestTask(){
+        editTaskLink.click()
+        browser.at BoostTestTaskConfigurationPage
+    }
 }

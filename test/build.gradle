@@ -42,12 +42,13 @@ test{
 
 //    filter{
 //
-//        includeTestsMatching "ParseXmlTest"
-//        includeTestsMatching "UseFileNameCollisionTest"
-//        includeTestsMatching "UseTaskNameCollisionTest"
-//        includeTestsMatching "UseTaskAndFileNamesCollisionTest"
-//        includeTestsMatching "CheckPatternsTest"
-//        includeTestsMatching "UseSubdirectoryTest"
+////        includeTestsMatching "ParseXmlTest"
+////        includeTestsMatching "UseFileNameCollisionTest"
+////        includeTestsMatching "UseTaskNameCollisionTest"
+////        includeTestsMatching "UseTaskAndFileNamesCollisionTest"
+////        includeTestsMatching "CheckPatternsTest"
+////        includeTestsMatching "UseSubdirectoryTest"
+//        includeTestsMatching "EditFieldsTest"
 //    }
 
     systemProperties "geb.build.reportsDir": "$reportsDir/geb"
