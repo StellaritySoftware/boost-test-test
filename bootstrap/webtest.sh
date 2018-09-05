@@ -9,4 +9,4 @@ app=${BAMBOO_URL}/bamboo
 waitForApp $app
 sleep 10
 
-cd /opt/test && ./gradlew -Dgeb.env=chromeHeadless --info test
+cd /opt/test && ./gradlew -Dgeb.env=chromeHeadless --info --stacktrace test
