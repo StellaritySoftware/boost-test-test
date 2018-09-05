@@ -32,7 +32,7 @@ class ParseXmlTest extends GebReportingSpec
         boostTestTaskConfiguration.parseOnlyModeCheckbox = true
         boostTestTaskConfiguration.enterOutputFilesName("testXml.xml")
         boostTestTaskConfiguration.uncollapseAdvancedOptions()
-        boostTestTaskConfiguration.pickOutdatedFiles = true
+        boostTestTaskConfiguration.pickOutdatedFiles()
 
         boostTestTaskConfiguration.clickSave()
 

@@ -27,7 +27,7 @@ class BoostTestTaskConfigurationPage extends Page{
         successfulTaskCreationText {$("div.aui-message.aui-message-success").text() == "Task created successfully."}
         successfulTaskUpdatedText {$("div.aui-message.aui-message-success").text() == "Task saved successfully."}
         outpuFiles{$("#boosttestOutputFiles")}
-        pickOutdatedFiles{$("#boosttestPickOutdatedFiles")}
+        pickOutdatedFiles{$("input[type='checkbox']#boosttestPickOutdatedFiles")}
         collapseSection{$("form div.collapsible-details")}
 
     }
@@ -45,6 +45,10 @@ class BoostTestTaskConfigurationPage extends Page{
     def uncollapseAdvancedOptions(){
         js."document.querySelector('fieldset.collapsible-section.collapsed div.summary span.icon.icon-expand').click()"
         waitFor{collapseSection.isDisplayed()}
+    }
+
+    def pickOutdatedFiles(){
+        js."document.querySelector('input[type=checkbox]#boosttestPickOutdatedFiles').click()"
     }
 
     def enterOutputFilesName(String name) {
