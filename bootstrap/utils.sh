@@ -22,3 +22,7 @@ installPlugin()
     echo [BOOTSTRAP] Ready
 }
 
+makeDirDeletableForAll()
+{
+    find $1 -type d -exec chmod 777 {} \;
+}

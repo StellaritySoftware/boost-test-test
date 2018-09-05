@@ -9,4 +9,6 @@ app=${BAMBOO_URL}/bamboo
 waitForApp $app
 sleep 10
 
+trap "makeDirDeletableForAll /opt/test" EXIT
+
 cd /opt/test && ./gradlew -Dgeb.env=chromeHeadless --info --stacktrace test
