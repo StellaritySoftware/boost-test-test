@@ -1,9 +1,8 @@
 #!/bin/bash
 
+source /bootstrap/utils.sh
 umask 000
 set -e
-
-source /bootstrap/utils.sh
 
 app=${BAMBOO_URL}/bamboo
 
