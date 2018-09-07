@@ -70,4 +70,9 @@ class BoostTestTaskConfigurationPage extends Page{
         js."document.querySelector('#boosttestOutputFiles').scrollIntoView()"
         pickOutdatedFiles = true
     }
+
+    def setEnvironmenVariables(String variables) {
+        js."document.querySelector('#boosttestEnvironment').scrollIntoView()"
+        environmentVariable << variables
+    }
  }
