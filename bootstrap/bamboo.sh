@@ -1,9 +1,8 @@
 #!/bin/bash
 
+source /bootstrap/utils.sh
 umask 000
 set -e
-
-source /bootstrap/utils.sh
 
 app=http://localhost:6990/bamboo
 creds=admin:admin
@@ -22,7 +21,7 @@ ln -s /opt/bamboo /opt/amps-standalone-bamboo-${BAMBOO_VERSION}/target/bamboo
 if [ ! -z "$pluginPath" ]
 then
     echo [BOOTSTRAP] Running with plugin $pluginPath...
-    (sleep 60 && waitForApp $app && installPlugin $app $creds $pluginPath)&
+    (sleep 60 && waitForApp $app && makeDirDeletableForAll /opt/bamboo && installPlugin $app $creds $pluginPath)&
 else
     echo [BOOTSTRAP] Running without plugin...
 fi
