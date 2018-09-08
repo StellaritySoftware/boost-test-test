@@ -31,6 +31,8 @@ class UseSubdirectoryTest extends GebReportingSpec
         boostTestTaskConfiguration.subdirectory << 'subDir'
         boostTestTaskConfiguration.clickSave()
 
+        configureTasksPage.markEnablePlanCheckbox()
+
         def createdPlan = configureTasksPage.clickCreateButton()
 
         def planBuild = createdPlan.runManualBuild()

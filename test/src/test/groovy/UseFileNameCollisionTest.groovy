@@ -31,6 +31,8 @@ class UseFileNameCollisionTest extends GebReportingSpec
         boostTestTaskConfiguration.checkFileNameCollision()
         boostTestTaskConfiguration.clickSave()
 
+        configureTasksPage.markEnablePlanCheckbox()
+
         def createdPlan = configureTasksPage.clickCreateButton()
 
         def planBuild = createdPlan.runManualBuild()

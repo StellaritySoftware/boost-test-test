@@ -36,6 +36,8 @@ class ParseXmlTest extends GebReportingSpec
 
         boostTestTaskConfiguration.clickSave()
 
+        configureTasksPage.markEnablePlanCheckbox()
+
         def createdPlan = configureTasksPage.clickCreateButton()
 
         def planBuild = createdPlan.runManualBuild()

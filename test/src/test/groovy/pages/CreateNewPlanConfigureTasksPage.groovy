@@ -6,13 +6,14 @@ import org.openqa.selenium.By
 class CreateNewPlanConfigureTasksPage extends Page
 {
     static url =  Config.context + "/build/admin/create/createPlanTasks.action"
-    static at = { $("#content header h1").text() == "Create plan" && $("#onePageCreate > h2").text() ==~ /Configure (tasks|Job)/ || $("#content header h1 a").text() == "Configuration - ${Config.planName}" }
+    static at = { $("#content header h1").text().matches("Create(.*)plan")  && $("#onePageCreate > h2").text() ==~ /Configure (tasks|Job)/ || $("#content header h1 a").text() == "Configuration - ${Config.planName}" }
 
     static content =
     {
         buttonAddTask(to: TaskTypesPage){$("#addTask")}
         enablePlanCheckBox(required: false){$("input#finalisePlanCreation_chainEnabled", type:"checkbox")}
         buttonCreate(required: false){$("#finalisePlanCreation_save")}
+        buttonCreateDefault(required: false){$("input#finalisePlanCreation_defaultSave")}
         buttonCreatePlan{$("#createPlan")} // Bamboo version 6.4.0
         editTaskLink {$(By.cssSelector("a[href='/bamboo/build/admin/edit/editTask.action?planKey=${Config.projKey}-${Config.planKey}-JOB1&taskId=1']"))}
     }
@@ -24,7 +25,10 @@ class CreateNewPlanConfigureTasksPage extends Page
 
     def clickCreateButton(){
         if(!buttonCreate.empty){
-            buttonCreate.click()
+            js."document.querySelector('input#finalisePlanCreation_save').click()"  //6.0.0
+        }
+        else if(!buttonCreateDefault.empty){
+            js."document.querySelector('input#finalisePlanCreation_defaultSave').click()"
         }
         else if(!buttonCreatePlan.empty){
             js."document.querySelector('#createPlan').click()"
@@ -34,6 +38,7 @@ class CreateNewPlanConfigureTasksPage extends Page
 
     def markEnablePlanCheckbox(){
         if(enablePlanCheckBox.isDisplayed()){
+            js."document.querySelector('input#finalisePlanCreation_chainEnabled').scrollIntoView()"
             enablePlanCheckBox = true
         }
     }

@@ -32,6 +32,8 @@ class OnlyTestFileNameEnteredTest extends GebReportingSpec
         boostTestTaskConfiguration.testExecutables << "my_test"
         boostTestTaskConfiguration.clickSave()
 
+        configureTasksPage.markEnablePlanCheckbox()
+
         def createdPlan = configureTasksPage.clickCreateButton()
 
         def planBuild = createdPlan.runManualBuild()
