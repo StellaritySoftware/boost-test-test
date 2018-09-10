@@ -4,6 +4,7 @@ package pages
 
 import geb.Page
 import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
 
 
 /**
@@ -51,6 +52,8 @@ class PlanBuildPage extends Page {
     }
 
     def checkTextAddedToTests(String fileName, Integer expectedTestsCount) {
-        return driver.findElements(By.xpath("//table[@id='new-failed-tests']//td/span[contains(text(), '{${fileName}}')]")).size() == expectedTestsCount
+        List<WebElement> list
+        waitFor { (list = driver.findElements(By.xpath("//table[@id='new-failed-tests']//td/span[contains(text(), '{${fileName}}')]"))).size() >  0 }
+        return list.size() == expectedTestsCount
     }
  }

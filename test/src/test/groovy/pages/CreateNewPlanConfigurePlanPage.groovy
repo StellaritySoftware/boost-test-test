@@ -69,6 +69,7 @@ class CreateNewPlanConfigurePlanPage extends Page
         if (newRepositoryOption.isDisplayed()){
             newRepositoryOption.click()
         }
+        js."document.querySelector('#repository-other').scrollIntoView()"
         selectRepositoryLink.click()
         interact{
             moveToElement(noneRepositoryLink)
