@@ -56,4 +56,9 @@ class PlanBuildPage extends Page {
         waitFor { (list = driver.findElements(By.xpath("//table[@id='new-failed-tests']//td/span[contains(text(), '{${fileName}}')]"))).size() >  0 }
         return list.size() == expectedTestsCount
     }
+
+    def checkNoTestsWithTexts(String fileName, Integer expectedTestsCount) {
+        List<WebElement> list = driver.findElements(By.xpath("//table[@id='new-failed-tests']//td/span[contains(text(), '{${fileName}}')]"))
+        return list.size() == expectedTestsCount
+    }
  }

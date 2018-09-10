@@ -47,7 +47,7 @@ class CheckPatternsTest extends GebReportingSpec
         then:
         planBuild.checkTextAddedToTests('my_test', 5)
         planBuild.checkTextAddedToTests('testFile_Test', 5)
-        planBuild.checkTextAddedToTests('t_st', 0)
+        planBuild.checkNoTestsWithTexts ('t_st', 0)
 
     }
 }
