@@ -1,6 +1,8 @@
+import commonpages.LoginPage
+import configuration.CommonConfig
 import geb.spock.GebReportingSpec
-import pages.Config
-import pages.LoginPage
+import pages.BoostTestTaskConfigurationPage
+import pages.TaskTypesPage
 
 class EditFieldsTest extends GebReportingSpec
 {
@@ -11,7 +13,7 @@ class EditFieldsTest extends GebReportingSpec
 
         def loginPage = browser.to LoginPage
 
-        def dashboardPage = loginPage.login(Config.user, Config.password)
+        def dashboardPage = loginPage.login(CommonConfig.user, CommonConfig.password)
 
         def createNewPlanConfigurePlanPage = dashboardPage.createNewPlan()
         createNewPlanConfigurePlanPage.setRandomProjectPlanNames()
@@ -19,7 +21,7 @@ class EditFieldsTest extends GebReportingSpec
 
         def configureTasksPage = createNewPlanConfigurePlanPage.clickConfigurePlanButton()
 
-        def tasks = configureTasksPage.addTask()
+        def tasks = configureTasksPage.addTask(TaskTypesPage)
 
         def boostTestTaskConfiguration = tasks.selectBoostTesttask()
         boostTestTaskConfiguration.taskDescription << "my_task"
@@ -34,7 +36,7 @@ class EditFieldsTest extends GebReportingSpec
 
         boostTestTaskConfiguration.clickSave()
 
-        configureTasksPage.editBoostTestTask()
+        configureTasksPage.editTask(BoostTestTaskConfigurationPage)
 // FIRST CHECK
         then:
         boostTestTaskConfiguration.taskDescriptionUpdate.value() == "my_task"
@@ -55,7 +57,7 @@ class EditFieldsTest extends GebReportingSpec
 // SECOND CHECK
 
         when:
-        configureTasksPage.editBoostTestTask()
+        configureTasksPage.editTask(BoostTestTaskConfigurationPage)
 
         boostTestTaskConfiguration.taskDescriptionUpdate = "second_task"
         boostTestTaskConfiguration.disabletaskCheckboxUpdate = false
@@ -68,7 +70,7 @@ class EditFieldsTest extends GebReportingSpec
 
         boostTestTaskConfiguration.clickSave()
 
-        configureTasksPage.editBoostTestTask()
+        configureTasksPage.editTask(BoostTestTaskConfigurationPage)
 
         then:
         boostTestTaskConfiguration.taskDescriptionUpdate.value() == "second_task"
