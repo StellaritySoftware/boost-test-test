@@ -39,8 +39,12 @@ class OnlyTestFileNameEnteredTest extends GebReportingSpec
         def planBuild = createdPlan.runManualBuild()
 
         then:
-
         planBuild.waitForFailedHeader()
+
+        when:
+        planBuild.testsTabLink.click()
+        
+        then:
         planBuild.checkNumberOfFailedTests('5')
 
     }

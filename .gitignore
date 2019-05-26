@@ -1,3 +1,4 @@
 test/.gradle
 test/build
 .idea
+/test/.nb-gradle/
